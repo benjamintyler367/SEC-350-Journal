@@ -84,3 +84,8 @@ set system host-name 'edge02-benjamin'
 set system login user vyos authentication encrypted-password '$6$YUTCBnIl7XuxPfv7$UQXsMiDLSJsDs9mPJ2PQ.9IjjMks5MrKu6IlQRJsS.VIvkYeQXFvupJVrZMTQFYjkbTkRshVAYECJS337kHAS/'
 set system login user vyos authentication plaintext-password ''
 set system name-server '10.0.17.2'
+set firewall name DMZ-to-WAN default-action 'drop'
+set firewall name DMZ-to-WAN enable-default-log
+set zone-policy zone DMZ interface eth1
+set zone-policy zone WAN interface eth0
+set zone-policy zone WAN from DMZ firewall name 'DMZ-to-WAN'
